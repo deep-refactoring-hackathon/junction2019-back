@@ -1,7 +1,7 @@
 import os
 
 import redis
-from flask import Flask, request
+from flask import Flask, request, Response
 
 from db import load_mock_data
 
@@ -11,7 +11,12 @@ db = redis.from_url(os.environ.get('REDIS_URL'))
 
 @app.route("/api/v1/tasks/<int:task_id>", methods=["GET"])
 def get_task(task_id):
-    return db.get(f'task:{task_id}')
+    return Response(db.get(f'task:{task_id}'), mimetype='application/json')
+
+
+@app.route("/api/v1/help/<int:task_id>", methods=["GET"])
+def get_help(task_id):
+    return Response(db.get(f'help:{task_id}'), mimetype='application/json')
 
 
 @app.route("/api/v1/answers/<int:task_id>", methods=["POST"])
