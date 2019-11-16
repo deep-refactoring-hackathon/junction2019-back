@@ -5,7 +5,7 @@
             "type": "chat",
             "payload": {
                 "messages": [
-                    "Hello! Our favorite band do a concert this weekend \u2764\ufe0f. We must do \ud83d\ude46\u200d\u2640\ufe0fHello! Our favorite band do a concert this weekend \u2764\ufe0f. We must do \ud83d\ude46\u200d\u2640\ufe0fHello! Our favorite band do a concert this weekend \u2764\ufe0f. We must do \ud83d\ude46\u200d\u2640\ufe0fHello! Our favorite band do a concert this weekend \u2764\ufe0f. We must do \ud83d\ude46\u200d\u2640\ufe0fHello! Our favorite band do a concert this weekend \u2764\ufe0f. We must do \ud83d\ude46\u200d\u2640\ufe0f",
+                    "Hello! Our favorite band do a concert this weekend \u2764\ufe0f. We must do \ud83d\ude46\u200d\u2640\ufe0fHello! Our favorite band do a concert this weekend \u2764\ufe0f.",
                     "We should buy tickets \ud83c\udfab\ud83d\udcb8"
                 ],
                 "from": "Kevin"
@@ -31,12 +31,12 @@
         }
     },
     {
-        "help": "Do not download or install anything from the website you don't know.",
+        "help": "If it's too good to be true, most probably it is. Do not trust free prizes and gifts over the internet.",
         "task": {
             "type": "single-image",
             "payload": {
-                "text": "Will you download video from this website?",
-                "imageUrl": "https://res.cloudinary.com/dzpmqwz0e/image/upload/v1573908665/ticket2.png"
+                "text": "Will you try to get the free phone?",
+                "imageUrl": "https://i.imgur.com/RSd85BD.jpg"
             },
             "answer": false,
             "next_task_id": 4
