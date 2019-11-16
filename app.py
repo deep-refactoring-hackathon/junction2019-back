@@ -77,11 +77,12 @@ def ask_chat():
 
     for meta in answer.get("metadata", []):
         if meta["name"] == "wasted":
+            wasted = meta["value"].lower() == "true"
             return Response(
                 json.dumps(
                     {
-                        "text": "Ha! Busted!" if meta["name"]["wasted"] else "You got me!",
-                        "wasted": meta["name"]["wasted"],
+                        "text": "Ha! Busted!" if wasted else "You got me!",
+                        "wasted": wasted,
                     }
                 ),
                 mimetype="application/json",
