@@ -8,7 +8,7 @@ from flask_cors import CORS, cross_origin
 
 QNA_HOST = "https://hackjunction.azurewebsites.net/qnamaker"
 QNA_FISHGING_APP_ID = "3e68fd98-d61c-4dd0-aea7-80710112abed"
-QNA_CHAT_APP_ID = "3e68fd98-d61c-4dd0-aea7-80710112abed"
+QNA_CHAT_APP_ID = "629df2f4-9f5e-419a-a1df-572ea48405d9"
 QNA_FISHING_ENDPOINT = f"{QNA_HOST}/knowledgebases/{QNA_FISHGING_APP_ID}/generateAnswer"
 QNA_CHAT_ENDPOINT = f"{QNA_HOST}/knowledgebases/{QNA_CHAT_APP_ID}/generateAnswer"
 
@@ -66,7 +66,10 @@ def _handle_chat(endpoint, default_response):
     resp = chat_service_response.json()
     answer = resp["answers"] and resp["answers"][0]
     if answer:
-        return None, answer
+        return None, Response(
+            json.dumps({"text": answer["answer"], "wasted": None}),
+            mimetype="application/json",
+        )
     return Response(default_response, mimetype="application/json"), None
 
 
