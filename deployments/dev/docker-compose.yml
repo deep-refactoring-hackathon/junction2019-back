@@ -4,7 +4,7 @@ services:
     image: "redis:alpine"
   web:
     build: .
-    environment: 
+    environment:
       PORT: "5050"
     ports:
-      - "5000:5000"
+      - "5050:5050"

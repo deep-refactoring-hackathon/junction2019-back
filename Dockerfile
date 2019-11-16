@@ -1,9 +1,8 @@
 FROM python:3.8-alpine
-WORKDIR /code
-ENV FLASK_APP app.py
-ENV FLASK_RUN_HOST 0.0.0.0
 RUN apk add --no-cache gcc musl-dev linux-headers
-COPY requirements.txt requirements.txt
-RUN pip install -r requirements.txt
+WORKDIR /code
 COPY . .
-CMD ["flask", "run"]
+RUN pip install -r requirements.txt
+ENV HOST 0.0.0.0
+ENTRYPOINT ["python"]
+CMD ["app.py"]
