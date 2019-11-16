@@ -5,8 +5,8 @@
             "type": "chat",
             "payload": {
                 "messages": [
-                    "Hello! Our favorite band do a concert this weekend \u2764\ufe0f. We must do \ud83d\ude46\u200d\u2640\ufe0fHello! Our favorite band do a concert this weekend \u2764\ufe0f.",
-                    "We should buy tickets \ud83c\udfab\ud83d\udcb8"
+                    "Hello! Our favorite band do a concert this weekend \u2764\ufe0f. We must go \ud83d\ude46\u200d\u2640\ufe0f",
+                    "Let's buy tickets!!! \ud83c\udfab\ud83d\udcb8"
                 ],
                 "from": "Kevin"
             },
