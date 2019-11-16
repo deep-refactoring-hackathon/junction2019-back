@@ -3,7 +3,7 @@ import os
 
 import redis
 import requests
-from flask import Flask, request, Response
+from flask import Flask, request, Response, redirect
 from flask_cors import CORS, cross_origin
 
 QNA_HOST = "https://hackjunction.azurewebsites.net/qnamaker"
@@ -23,6 +23,11 @@ def load_mock_data(db):
         for idx, task_data in enumerate(tasks, start=1):
             for prefix in task_data.keys():
                 db.set(f"{prefix}:{idx}", json.dumps(task_data[prefix]))
+
+
+@app.route("/", methods=["GET"])
+def main_page():
+    return redirect(os.environ.get('FRONTEND_URL', '/api/v1/tasks/1'))
 
 
 @app.route("/api/v1/tasks/<int:task_id>", methods=["GET"])
@@ -45,35 +50,24 @@ def process_answer(task_id):
 @app.route("/api/v1/chat", methods=["POST"])
 @cross_origin()
 def ask_chat():
-    data = request.get_json()
-    payload = {"question": data["message"], "top": 1}
-    key = os.environ.get("QNA_KEY")
-    headers = {"Authorization": f"EndpointKey {key}"}
-    r = requests.post(QNA_ENDPOINT, json=payload, headers=headers)
-    if r.status_code != 200:
+    payload = {"question": request.get_json()["message"], "top": 1}
+    headers = {"Authorization": f"EndpointKey {os.environ.get('QNA_KEY')}"}
+    chat_service_response = requests.post(QNA_ENDPOINT, json=payload, headers=headers)
+    default_response = json.dumps(
+        {
+            "text": "Hmmm... I really don't have much time, could you send me the money ASAP, please?",
+            "wasted": None,
+        }
+    )
+    if chat_service_response.status_code != 200:
         return Response(
-            json.dumps(
-                {
-                    "text": "Hmmm... I really don't have much time, could you send me the money ASAP, please?",
-                    "wasted": None,
-                }
-            ),
-            status=r.status_code,
-            mimetype="application/json",
+            default_response, status=chat_service_response.status_code, mimetype="application/json"
         )
 
-    resp = r.json()
+    resp = chat_service_response.json()
     answer = resp["answers"] and resp["answers"][0]
     if not answer:
-        return Response(
-            json.dumps(
-                {
-                    "text": "Hmmm... I really don't have much time, could you send me the money ASAP, please?",
-                    "wasted": None,
-                }
-            ),
-            mimetype="application/json",
-        )
+        return Response(default_response, mimetype="application/json")
 
     for meta in answer.get("metadata", []):
         if meta["name"] == "wasted":
