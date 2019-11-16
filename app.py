@@ -6,13 +6,7 @@ from flask import Flask
 from db import load_mock_data
 
 app = Flask(__name__)
-db = redis.Redis(
-    host=os.environ.get("REDIS_HOST"),
-    port=os.environ.get("REDIS_PORT"),
-    password=os.environ.get("REDIS_PASSWORD"),
-    charset="utf-8",
-    errors="strict",
-)
+db = redis.from_url(os.environ.get('REDIS_URL'))
 
 
 @app.route("/api/v1/tasks/<int:task_id>", methods=["GET"])
