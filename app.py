@@ -50,7 +50,46 @@ def ask_chat():
     key = os.environ.get("QNA_KEY")
     headers = {"Authorization": f"EndpointKey {key}"}
     r = requests.post(QNA_ENDPOINT, json=payload, headers=headers)
-    return r.json(), 200
+    if r.status_code != 200:
+        return Response(
+            json.dumps(
+                {
+                    "text": "Hmmm... I really don't have much time, could you send me the money ASAP, please?",
+                    "wasted": None,
+                }
+            ),
+            status=r.status_code,
+            mimetype="application/json",
+        )
+
+    resp = json.loads(r.json())
+    answer = resp["answers"] and resp["answers"][0]
+    if not answer:
+        return Response(
+            json.dumps(
+                {
+                    "text": "Hmmm... I really don't have much time, could you send me the money ASAP, please?",
+                    "wasted": None,
+                }
+            ),
+            mimetype="application/json",
+        )
+
+    for meta in answer.get("metadata", []):
+        if meta["name"] == "wasted":
+            return Response(
+                json.dumps(
+                    {
+                        "text": "Ha! Busted!" if meta["name"]["wasted"] else "You got me!",
+                        "wasted": meta["name"]["wasted"],
+                    }
+                ),
+                mimetype="application/json",
+            )
+    return Response(
+        json.dumps({"text": answer["answer"], "wasted": None}),
+        mimetype="application/json",
+    )
 
 
 if __name__ == "__main__":
