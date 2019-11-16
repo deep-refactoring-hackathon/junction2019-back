@@ -1,6 +1,6 @@
 # Junction hackathon app
 
-<img src="/logo.png" alt="Peace Duck" title="Peace Duckt" width="35%" />
+<img src="/logo.png" alt="Peace Duck" title="Peace Duckt" width="45%" />
 
 Child awareness app backend
 
