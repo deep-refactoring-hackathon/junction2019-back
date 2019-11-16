@@ -62,7 +62,7 @@ def ask_chat():
             mimetype="application/json",
         )
 
-    resp = json.loads(r.json())
+    resp = r.json()
     answer = resp["answers"] and resp["answers"][0]
     if not answer:
         return Response(
