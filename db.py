@@ -30,6 +30,5 @@ TASKS = [
 
 
 def load_mock_data(db):
-    print("loading data")
     for idx, task in enumerate(TASKS, start=1):
-        db.mset({idx: json.dumps(task)})
+        db.set(f'task:{idx}', json.dumps(task))
