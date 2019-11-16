@@ -2,6 +2,7 @@ import os
 
 import redis
 from flask import Flask, request
+from flask_cors import CORS, cross_origin
 import requests
 
 from db import load_mock_data
@@ -11,6 +12,7 @@ QNA_APP_ID = '3e68fd98-d61c-4dd0-aea7-80710112abed'
 QNA_ENDPOINT = f'{QNA_HOST}/knowledgebases/{QNA_APP_ID}/generateAnswer'
 
 app = Flask(__name__)
+CORS(app)
 db = redis.from_url(os.environ.get('REDIS_URL'))
 
 
@@ -27,9 +29,11 @@ def process_answer(task_id):
 
 
 @app.route("/api/v1/chat", methods=["POST"])
+@cross_origin()
 def ask_chat():
-    data = request.form
-    payload = {'question': data.get("message"), 'top': 1}
+    data = request.get_json()
+    print(data)
+    payload = {'question': data['message'], 'top': 1}
     key = os.environ.get('QNA_KEY')
     headers = {'Authorization': f'EndpointKey {key}'}
     r = requests.post(QNA_ENDPOINT, json=payload, headers=headers)
