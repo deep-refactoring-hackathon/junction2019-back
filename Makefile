@@ -7,9 +7,8 @@ venv:
 docker/dev/up:
 	docker-compose --project-directory . -f ./deployments/dev/docker-compose.yml up --build
 
-
 docker/dev/up/silent:
 	docker-compose --project-directory . -f ./deployments/dev/docker-compose.yml up --build -d
 
 docker/dev/down:
-	docker-compose -f ./deployments/dev/docker-compose.yml down
+	docker-compose --project-directory . -f ./deployments/dev/docker-compose.yml down

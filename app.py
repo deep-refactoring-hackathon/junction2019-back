@@ -1,25 +1,15 @@
-import time
-
 import redis
 from flask import Flask
 
+from db import load_mock_data
+
 app = Flask(__name__)
-cache = redis.Redis(host='redis', port=6379)
+db = redis.Redis(host="redis", port=6379)
 
 
-def get_hit_count():
-    retries = 5
-    while True:
-        try:
-            return cache.incr('hits')
-        except redis.exceptions.ConnectionError as exc:
-            if retries == 0:
-                raise exc
-            retries -= 1
-            time.sleep(0.5)
+@app.route("/api/v1/tasks/<int:task_id>", methods=["GET"])
+def get_task(task_id):
+    return db.get(task_id)
 
 
-@app.route('/')
-def hello():
-    count = get_hit_count()
-    return 'Hello World! I have been seen {} times.\n'.format(count)
+load_mock_data(db)
