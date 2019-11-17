@@ -94,8 +94,9 @@ def fishing_chat():
                 ),
                 mimetype="application/json",
             )
+    stub_text = "No good match found in KB."
     return Response(
-        json.dumps({"text": answer["answer"], "wasted": None}),
+        json.dumps({"text": answer["answer"], "wasted": None}) if answer['answer'] != stub_text else default_response,
         mimetype="application/json",
     )
 
