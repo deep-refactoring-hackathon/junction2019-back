@@ -185,7 +185,8 @@
             "type": "fishing-chat",
             "help": "You get a message from your friend Artem asking for money. You should decide whether to send it to him.",
             "payload": {
-                "text": "Hi! I really need your help! I got into a bad situation and need some money. Could you lend me €100 sending it to my card: 4444-5555-6666-7777? I will pay you back as soon as possible."
+                "text": "Hi! I really need your help! I got into a bad situation and need some money. Could you lend me €100 sending it to my card: 4444-5555-6666-7777? I will pay you back as soon as possible.",
+                "from": "Artem"
             },
             "next_task_id": 13
         }
