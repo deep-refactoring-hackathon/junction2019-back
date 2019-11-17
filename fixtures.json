@@ -160,6 +160,42 @@
                 ]
             },
             "answer": [1, 2, 3],
+            "next_task_id": 10
+        }
+    },
+    {
+        "help": "",
+        "task": {
+            "type": "main-complete",
+            "payload": {
+                "text": "Congratulations! You can safely go to the concert now!"
+            },
+            "next_task_id": 11
+        }
+    },
+    {
+        "help": "",
+        "task": {
+            "type": "bonus",
+            "next_task_id": 12
+        }
+    },
+    {
+        "help": "You get a message from your friend Artem asking for money. You should decide whether to send it to him.",
+        "task": {
+            "type": "fishing-chat",
+            "payload": {
+            },
+            "next_task_id": 13
+        }
+    },
+    {
+        "help": "",
+        "task": {
+            "type": "game-complete",
+            "payload": {
+                "text": "Well done! You know how to safely use internet!"
+            },
             "next_task_id": null
         }
     }
