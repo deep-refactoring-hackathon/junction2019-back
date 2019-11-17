@@ -24,9 +24,9 @@
                     "Have you seen it?",
                     "http://download-videos.fo/id?jurm=1fasda",
                     "It's so awesome!"
-                ]
+                ],
+                "from": "Kevin"
             },
-            "from": "Kevin",
             "next_task_id": 3
         }
     },
@@ -50,9 +50,9 @@
                 "messages": [
                     "Wow! I didn't know that I should not try to get such gifts. Thanks!",
                     "Could you help me choose the website to buy the tickets then?"
-                ]
+                ],
+                "from": "Kevin"
             },
-            "from": "Kevin",
             "next_task_id": 5
         }
     },
@@ -61,7 +61,7 @@
         "task": {
             "type": "choose-text",
             "payload": {
-                "text": "Choose website to buy tickets",
+                "text": "Choose website to buy tickets looking at its url text",
                 "options": [
                     {
                         "text": "http://but-ticket.pw",
@@ -121,9 +121,9 @@
                 "messages": [
                     "YAY! We have tickets!",
                     "Have you posted them in instagram?"
-                ]
+                ],
+                "from": "Kevin"
             },
-            "from": "Kevin",
             "next_task_id": 9
         }
     },
