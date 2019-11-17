@@ -1,8 +1,8 @@
 [
     {
-        "help": "",
         "task": {
             "type": "chat",
+            "help": "",
             "payload": {
                 "messages": [
                     "Hello! Our favorite band do a concert this weekend \u2764\ufe0f. We must go \ud83d\ude46\u200d\u2640\ufe0f",
@@ -14,9 +14,9 @@
         }
     },
     {
-        "help": "",
         "task": {
             "type": "chat",
+            "help": "",
             "payload": {
                 "messages": [
                     "Check out the video the from the last concert!!",
@@ -31,9 +31,9 @@
         }
     },
     {
-        "help": "If it's too good to be true, most probably it is. Do not trust free prizes and gifts over the internet.",
         "task": {
             "type": "single-image",
+            "help": "If it's too good to be true, most probably it is. Do not trust free prizes and gifts over the internet.",
             "payload": {
                 "text": "Will you try to get the free phone?",
                 "imageUrl": "https://i.imgur.com/RSd85BD.jpg",
@@ -44,9 +44,9 @@
         }
     },
     {
-        "help": "",
         "task": {
             "type": "chat",
+            "help": "",
             "payload": {
                 "messages": [
                     "Wow! I didn't know that I should not try to get such gifts. Thanks!",
@@ -58,9 +58,9 @@
         }
     },
     {
-        "help": "You should not enter your private information and buy stuff on websites that start with http://... ",
         "task": {
             "type": "choose-text",
+            "help": "You should not enter your private information and buy stuff on websites that start with http://... ",
             "payload": {
                 "text": "Choose website to buy tickets looking at its url text",
                 "options": [
@@ -87,9 +87,9 @@
         }
     },
     {
-        "help": "",
         "task": {
             "type": "chat",
+            "help": "",
             "payload": {
                 "messages": ["Great!", "Damn, it requires registration."],
                 "from": "Kevin"
@@ -98,9 +98,9 @@
         }
     },
     {
-        "help": "Choose passwords that are long but easy to remember, for example a phrase. Do not use single common words or names as they are easy to guess.",
         "task": {
             "type": "choose-text",
+            "help": "Choose passwords that are long but easy to remember, for example a phrase. Do not use single common words or names as they are easy to guess.",
             "payload": {
                 "text": "Choose password for the ticket website",
                 "options": [
@@ -121,9 +121,9 @@
         }
     },
     {
-        "help": "",
         "task": {
             "type": "chat",
+            "help": "",
             "payload": {
                 "messages": [
                     "YAY! We have tickets!",
@@ -135,9 +135,9 @@
         }
     },
     {
-        "help": "Electronic tickets usually are not personal and anybody can use them. So be careful when sharing information about them.",
         "task": {
             "type": "choose-picture",
+            "help": "Electronic tickets usually are not personal and anybody can use them. So be careful when sharing information about them.",
             "payload": {
                 "text": "What picture you want to post in instagram?",
                 "options": [
@@ -164,9 +164,9 @@
         }
     },
     {
-        "help": "",
         "task": {
             "type": "main-complete",
+            "help": "",
             "payload": {
                 "text": "Congratulations! You can safely go to the concert now!"
             },
@@ -174,25 +174,25 @@
         }
     },
     {
-        "help": "",
         "task": {
             "type": "bonus",
+            "help": "",
             "next_task_id": 12
         }
     },
     {
-        "help": "You get a message from your friend Artem asking for money. You should decide whether to send it to him.",
         "task": {
             "type": "fishing-chat",
+            "help": "You get a message from your friend Artem asking for money. You should decide whether to send it to him.",
             "payload": {
             },
             "next_task_id": 13
         }
     },
     {
-        "help": "",
         "task": {
             "type": "game-complete",
+            "help": "",
             "payload": {
                 "text": "Well done! You know how to safely use internet!"
             },
