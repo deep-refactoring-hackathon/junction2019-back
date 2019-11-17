@@ -66,10 +66,7 @@ def _handle_chat(endpoint, default_response):
     resp = chat_service_response.json()
     answer = resp["answers"] and resp["answers"][0]
     if answer:
-        return None, Response(
-            json.dumps({"text": answer["answer"], "wasted": None}),
-            mimetype="application/json",
-        )
+        return None, answer
     return Response(default_response, mimetype="application/json"), None
 
 
@@ -82,7 +79,7 @@ def fishing_chat():
             "wasted": None,
         }
     )
-    answer, response = _handle_chat(QNA_FISHING_ENDPOINT, default_response)
+    response, answer = _handle_chat(QNA_FISHING_ENDPOINT, default_response)
     if response:
         return response
     for meta in answer.get("metadata", []):
@@ -107,7 +104,7 @@ def fishing_chat():
 @cross_origin()
 def ask_duck():
     default_response = json.dumps({"text": "Sorry, I can't help you with that. Can you ask me a different question?"})
-    answer, response = _handle_chat(QNA_CHAT_ENDPOINT, default_response)
+    response, answer = _handle_chat(QNA_CHAT_ENDPOINT, default_response)
     if response:
         return response
     return Response(json.dumps({"text": answer["answer"]}), mimetype="application/json")
